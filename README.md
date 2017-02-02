@@ -1,4 +1,4 @@
-# [TeleMute](https://github.com/MutePuker/TeleMute)
+# [TeleMute](https://github.com/amirhosseinmohammadpor7/TeleMute)
 *TG-CLI based broadcasting bot!*
 # Install
 ```
@@ -14,10 +14,10 @@ chmod +x tg
 ```
 Create a bot!
 # Help And More...
-send ```Your PM``` to @MutePukerBot in telegram
+send ```Your PM``` to @oOo_2017_oOo in telegram
 # Developers
-* [@MutePuker](https://telegram.me/MutePuker) - Shervin
-* [@amirhossein_h_h_h](https://telegram.me/amirhossein_h_h_h) - amirhosein
+* [mute-team](https://t.me/joinchat/AAAAAEJT_SOKnYX5_h5b5A) - Channel
+* [@oOo_2017_oOo](https://t.me/oOo_2017_oOo) - amirhosein
 
 # Commands
 
