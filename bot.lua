@@ -2,19 +2,19 @@ package.path = package.path .. ';.luarocks/share/lua/5.2/?.lua'
 .. ';.luarocks/share/lua/5.2/?/init.lua'
 package.cpath = package.cpath .. ';.luarocks/lib/lua/5.2/?.so'
 
--- @MuteTeam
+-- @textt5
 http = require("socket.http")
 https = require("ssl.https")
 http.TIMEOUT = 10
 JSON = require('dkjson')
--------@MuteTeam
+-------@textt5
 tdcli = dofile('tdcli.lua')
 redis = (loadfile "./libs/redis.lua")()
 serpent = require('serpent')
 serp = require 'serpent'.block
 sudo_users = {
-  238773538,
-  173606679,
+  301216782,
+  0,
   0
 }
 
@@ -114,7 +114,7 @@ function vardump(value, depth, key)
   elseif type(value)  == 'function' or
     type(value) == 'thread' or
     type(value) == 'userdata' or
-    value == nil then --@MuteTeam
+    value == nil then --@textt5
     print(spaces .. tostring(value))
   elseif type(value)  == 'string' then
     print(spaces .. linePrefix .. '"' .. tostring(value) .. '",')
@@ -214,7 +214,7 @@ function tdcli_update_callback(data)
         tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '<b>PONG</b>', 1, 'html')
       end
       if input:match("^[#!/][Ii][Dd]$") then
-        tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '<b>SuperGroup ID : </b><code>'..string.sub(chat_id, 5,14)..'</code>\n<b>User ID : </b><code>'..user_id..'</code>\n<b>Channel : </b>@MuteTeam', 1, 'html')
+        tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '<b>SuperGroup ID : </b><code>'..string.sub(chat_id, 5,14)..'</code>\n<b>User ID : </b><code>'..user_id..'</code>\n<b>Channel : </b>@textt5', 1, 'html')
       end
 
       if input:match("^[#!/][Pp][Ii][Nn]$") and reply_id and is_owner(msg) then
@@ -299,12 +299,12 @@ end
 						--------------------------------------------------------
 			if input:match('^[/!#]setlink (.*)') and is_owner(msg) then
 redis:set('link'..chat_id,input:match('^[/!#]setlink (.*)'))
-tdcli.sendText(chat_id, 0, 0, 1, nil, 'Group Link Saved', 1, 'html')
+tdcli.sendText(chat_id, 0, 0, 1, nil, 'لینک گروه زخیره شد', 1, 'html')
 end
 
 if input:match('^[/!#]link') and is_owner(msg) then
 link = redis:get('link'..chat_id)
-tdcli.sendText(chat_id, 0, 0, 1, nil, 'Group Link :\n'..link, 1, 'html')
+tdcli.sendText(chat_id, 0, 0, 1, nil, 'لینک گروه :\n'..link, 1, 'html')
 end
 		-------------------------------------------------------
 		if input:match('^[/!#]setrules (.*)') and is_owner(msg) then
@@ -1007,7 +1007,7 @@ local res = http.request(database.."joke.db")
         .."*Mute Video : *".."`"..video.."`".."\n"
         .."*Mute Document : *".."`"..document.."`".."\n"
         .."*Mute Text : *".."`"..text1.."`".."\n"
-        .."*Mute Team* - @MuteTeam"
+        .."*Mute Team* - @textt5"
         tdcli.sendText(chat_id, msg.id_, 0, 1, nil, text, 1, 'md')
       end
       if input:match("^[#!/][Ff]wd$") then
@@ -1190,7 +1190,7 @@ if redis:get('edittg:'..data.chat_id_) then
 end 
   elseif (data.ID == "UpdateOption" and data.name_ == "my_id") then
 	
-    -- @MuteTeam
+    -- @textt5
     tdcli_function ({
       ID="GetChats",
       offset_order_="9223372036854775807",
