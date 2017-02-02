@@ -2,12 +2,12 @@ package.path = package.path .. ';.luarocks/share/lua/5.2/?.lua'
 .. ';.luarocks/share/lua/5.2/?/init.lua'
 package.cpath = package.cpath .. ';.luarocks/lib/lua/5.2/?.so'
 
--- @textt5
+-- @Telee_Mute
 http = require("socket.http")
 https = require("ssl.https")
 http.TIMEOUT = 10
 JSON = require('dkjson')
--------@textt5
+-------@Telee_Mute
 tdcli = dofile('tdcli.lua')
 redis = (loadfile "./libs/redis.lua")()
 serpent = require('serpent')
@@ -114,7 +114,7 @@ function vardump(value, depth, key)
   elseif type(value)  == 'function' or
     type(value) == 'thread' or
     type(value) == 'userdata' or
-    value == nil then --@textt5
+    value == nil then --@Telee_Mute
     print(spaces .. tostring(value))
   elseif type(value)  == 'string' then
     print(spaces .. linePrefix .. '"' .. tostring(value) .. '",')
@@ -214,7 +214,7 @@ function tdcli_update_callback(data)
         tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '<b>PONG</b>', 1, 'html')
       end
       if input:match("^[#!/][Ii][Dd]$") then
-        tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '<b>SuperGroup ID : </b><code>'..string.sub(chat_id, 5,14)..'</code>\n<b>User ID : </b><code>'..user_id..'</code>\n<b>Channel : </b>@textt5', 1, 'html')
+        tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '<b>ای دی سوپرگروه : </b><code>'..string.sub(chat_id, 5,14)..'</code>\n<b>ای دی شما : </b><code>'..user_id..'</code>\n<b>Channel : </b>@Telee_Mute', 1, 'html')
       end
 
       if input:match("^[#!/][Pp][Ii][Nn]$") and reply_id and is_owner(msg) then
@@ -388,7 +388,7 @@ local res = http.request(database.."joke.db")
       groups = redis:sismember('groups',chat_id)
       if input:match("^[#!/]lock links$") and is_mod(msg) and groups then
         if redis:get('lock_linkstg:'..chat_id) then
-          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '🚫_ Links is already Locked_', 1, 'md')
+          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '🚫_ لینک ممنوع_', 1, 'md')
         else
           redis:set('lock_linkstg:'..chat_id, true)
           tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '🚫 Links Has Been Locked', 1, 'md')
@@ -396,7 +396,7 @@ local res = http.request(database.."joke.db")
       end
       if input:match("^[#!/]unlock links$")  and is_mod(msg) and groups then
         if not redis:get('lock_linkstg:'..chat_id) then
-          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '🚫 links is already UnLocked', 1, 'md')
+          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '🚫 لینک مجاز', 1, 'md')
         else
           redis:del('lock_linkstg:'..chat_id)
           tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '✅ #Done\nlinks Has Been UnLocked', 1, 'md')
@@ -442,7 +442,7 @@ local res = http.request(database.."joke.db")
       groups = redis:sismember('groups',chat_id)
       if input:match("^[#!/]lock forward$") and is_mod(msg) and groups then
         if redis:get('forwardtg:'..chat_id) then
-          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '🚫 Forward is already Locked', 1, 'md')
+          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '🚫 فرواردممنوع', 1, 'md')
         else
           redis:set('forwardtg:'..chat_id, true)
           tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '✅ #Done\nForward Has Been Locked', 1, 'md')
@@ -450,7 +450,7 @@ local res = http.request(database.."joke.db")
       end
       if input:match("^[#!/]unlock forward$") and is_mod(msg) and groups then
         if not redis:get('forwardtg:'..chat_id) then
-          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '🚫 Forward is already Not Locked', 1, 'md')
+          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '🚫 فرواردمجاز', 1, 'md')
         else
           redis:del('forwardtg:'..chat_id)
           tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '✅ #Done\nForward Has Been UnLocked', 1, 'md')
@@ -478,7 +478,7 @@ local res = http.request(database.."joke.db")
       groups = redis:sismember('groups',chat_id)
       if input:match("^[#!/]lock english$") and is_mod(msg) and groups then
         if redis:get('engtg:'..chat_id) then
-          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '🚫 English is already Locked', 1, 'md')
+          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '🚫 چت کردن انگلیسی ممنوع', 1, 'md')
         else
           redis:set('engtg:'..chat_id, true)
           tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '✅ #Done\nEnglish Has Been Locked', 1, 'md')
@@ -486,7 +486,7 @@ local res = http.request(database.."joke.db")
       end
       if input:match("^[#!/]unlock english$") and is_mod(msg) and groups then
         if not redis:get('engtg:'..chat_id) then
-          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '🚫 English is already Not Locked', 1, 'md')
+          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '🚫 چت کردن انگلیسی مجاز', 1, 'md')
         else
           redis:del('engtg:'..chat_id)
           tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '✅ #Done\nEnglish Has Been UnLocked', 1, 'md')
@@ -496,7 +496,7 @@ local res = http.request(database.."joke.db")
       groups = redis:sismember('groups',chat_id)
       if input:match("^[#!/]lock fosh$") and is_mod(msg) and groups then
         if redis:get('badwordtg:'..chat_id) then
-          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '🚫 Fosh is already Locked', 1, 'md')
+          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '🚫 فش ممنوع', 1, 'md')
         else
           redis:set('badwordtg:'..chat_id, true)
           tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '✅ #Done\nFosh Has Been Locked', 1, 'md')
@@ -504,7 +504,7 @@ local res = http.request(database.."joke.db")
       end
       if input:match("^[#!/]unlock fosh$") and is_mod(msg) and groups then
         if not redis:get('badwordtg:'..chat_id) then
-          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '🚫 Fosh is already Not Locked', 1, 'md')
+          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '🚫 فش مجاز', 1, 'md')
         else
           redis:del('badwordtg:'..chat_id)
           tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '✅ #Done\nFosh Has Been UnLocked', 1, 'md')
@@ -514,7 +514,7 @@ local res = http.request(database.."joke.db")
       groups = redis:sismember('groups',chat_id)
       if input:match("^[#!/]lock edit$") and is_mod(msg) and groups then
         if redis:get('edittg:'..chat_id) then
-          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '🚫 Edit is already Locked', 1, 'md')
+          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '🚫 ادیت کردن ممنوع', 1, 'md')
         else
           redis:set('edittg:'..chat_id, true)
           tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '✅ #Done\nEdit Has Been Locked', 1, 'md')
@@ -522,7 +522,7 @@ local res = http.request(database.."joke.db")
       end
       if input:match("^[#!/]unlock edit$") and is_mod(msg) and groups then
         if not redis:get('edittg:'..chat_id) then
-          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '🚫 Edit is already Not Locked', 1, 'md')
+          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '🚫 ادیت کردن ازاد', 1, 'md')
         else
           redis:del('edittg:'..chat_id)
           tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '✅ #Done\nEdit Has Been UnLocked', 1, 'md')
@@ -549,7 +549,7 @@ local res = http.request(database.."joke.db")
       groups = redis:sismember('groups',chat_id)
       if input:match("^[#!/]lock emoji") and is_mod(msg) and groups then
         if redis:get('emojitg:'..chat_id) then
-          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '🚫 Emoji is already Locked', 1, 'md')
+          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '🚫 فرستادن شکلک ممنوع', 1, 'md')
         else
           redis:set('emojitg:'..chat_id, true)
           tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '✅ #Done\nEmoji Has Been Locked', 1, 'md')
@@ -557,7 +557,7 @@ local res = http.request(database.."joke.db")
       end
       if input:match("^[#!/]unlock emoji$") and is_mod(msg) and groups then
         if not redis:get('emojitg:'..chat_id) then
-          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '🚫 Emoji is already Not Locked', 1, 'md')
+          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '🚫 فرستادن شکلک مجاز', 1, 'md')
         else
           redis:del('emojitg:'..chat_id)
           tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '✅ #Done\nEmoji Has Been UNLocked', 1, 'md')
@@ -567,7 +567,7 @@ local res = http.request(database.."joke.db")
       groups = redis:sismember('groups',chat_id)
       if input:match("^[#!/]lock inline") and is_mod(msg) and groups then
         if redis:get('inlinetg:'..chat_id) then
-          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '🚫 Inline is already Locked', 1, 'md')
+          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '🚫 بنر شیشه ای ممنوع', 1, 'md')
         else
           redis:set('inlinetg:'..chat_id, true)
           tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '✅ #Done\nInline Has Been Locked', 1, 'md')
@@ -575,7 +575,7 @@ local res = http.request(database.."joke.db")
       end
       if input:match("^[#!/]unlock inline$") and is_mod(msg) and groups then
         if not redis:get('inlinetg:'..chat_id) then
-          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '🚫 Inline is already Not Locked', 1, 'md')
+          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '🚫 بنرشیشه ای مجاز', 1, 'md')
         else
           redis:del('inlinetg:'..chat_id)
           tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '✅ #Done\nInline Has Been UNLocked', 1, 'md')
@@ -585,7 +585,7 @@ local res = http.request(database.."joke.db")
       groups = redis:sismember('groups',chat_id)
       if input:match("^[#!/]lock reply") and is_mod(msg) and groups then
         if redis:get('replytg:'..chat_id) then
-          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '🚫 Reply is already Locked', 1, 'md')
+          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '🚫 ریپلی ممنوع', 1, 'md')
         else
           redis:set('replytg:'..chat_id, true)
           tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '✅ #Done\nReply Has Been Locked', 1, 'md')
@@ -593,7 +593,7 @@ local res = http.request(database.."joke.db")
       end
       if input:match("^[#!/]unlock reply$") and is_mod(msg) and groups then
         if not redis:get('replytg:'..chat_id) then
-          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '🚫 Reply is already Not Locked', 1, 'md')
+          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '🚫 ریپلی مجاز', 1, 'md')
         else
           redis:del('replytg:'..chat_id)
           tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '✅ #Done\nReply Has Been UNLocked', 1, 'md')
@@ -733,7 +733,7 @@ local res = http.request(database.."joke.db")
       groups = redis:sismember('groups',chat_id)
       if input:match("^[#!/][Mm]ute all$") and is_mod(msg) and groups then
         if redis:get('mute_alltg:'..chat_id) then
-          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '*Mute All is already on*', 1, 'md')
+          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '*سکوت فعال*', 1, 'md')
         else
           redis:set('mute_alltg:'..chat_id, true)
           tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '*Mute All has been enabled*', 1, 'md')
@@ -741,7 +741,7 @@ local res = http.request(database.."joke.db")
       end
       if input:match("^[#!/][Uu]nmute all$") and is_mod(msg) and groups then
         if not redis:get('mute_alltg:'..chat_id) then
-          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '*Mute All is already disabled*', 1, 'md')
+          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '*سکوت غیر فعال*', 1, 'md')
         else
           redis:del('mute_alltg:'..chat_id)
           tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '*Mute All has been disabled*', 1, 'md')
@@ -752,7 +752,7 @@ local res = http.request(database.."joke.db")
       groups = redis:sismember('groups',chat_id)
       if input:match("^[#!/][Mm]ute sticker$") and is_mod(msg) and groups then
         if redis:get('mute_stickertg:'..chat_id) then
-          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '*Mute sticker is already on*', 1, 'md')
+          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '*سکوت استیکرفعال*', 1, 'md')
         else
           redis:set('mute_stickertg:'..chat_id, true)
           tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '*Mute sticker has been enabled*', 1, 'md')
@@ -760,7 +760,7 @@ local res = http.request(database.."joke.db")
       end
       if input:match("^[#!/][Uu]nmute sticker$") and is_mod(msg) and groups then
         if not redis:get('mute_stickertg:'..chat_id) then
-          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '*Mute sticker is already disabled*', 1, 'md')
+          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '*سکوت استیکر غیر فعال*', 1, 'md')
         else
           redis:del('mute_stickertg:'..chat_id)
           tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '*Mute sticker has been disabled*', 1, 'md')
@@ -770,7 +770,7 @@ local res = http.request(database.."joke.db")
       groups = redis:sismember('groups',chat_id)
       if input:match("^[#!/][Mm]ute gift$") and is_mod(msg) and groups then
         if redis:get('mute_gifttg:'..chat_id) then
-          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '*Mute gift is already on*', 1, 'md')
+          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '*سکوت گیف فعال*', 1, 'md')
         else
           redis:set('mute_gifttg:'..chat_id, true)
           tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '*Mute gift has been enabled*', 1, 'md')
@@ -778,7 +778,7 @@ local res = http.request(database.."joke.db")
       end
       if input:match("^[#!/][Uu]nmute gift$") and is_mod(msg) and groups then
         if not redis:get('mute_gifttg:'..chat_id) then
-          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '*Mute gift is already disabled*', 1, 'md')
+          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '*سوکت گیف غیر فعال*', 1, 'md')
         else
           redis:del('mute_gifttg:'..chat_id)
           tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '*Mute gift has been disabled*', 1, 'md')
@@ -788,7 +788,7 @@ local res = http.request(database.."joke.db")
       groups = redis:sismember('groups',chat_id)
       if input:match("^[#!/][Mm]ute contact$") and is_mod(msg) and groups then
         if redis:get('mute_contacttg:'..chat_id) then
-          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '*Mute contact is already on*', 1, 'md')
+          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '*سکوت کانتکت فعال*', 1, 'md')
         else
           redis:set('mute_contacttg:'..chat_id, true)
           tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '*Mute contact has been enabled*', 1, 'md')
@@ -796,7 +796,7 @@ local res = http.request(database.."joke.db")
       end
       if input:match("^[#!/][Uu]nmute contact$") and is_mod(msg) and groups then
         if not redis:get('mute_contacttg:'..chat_id) then
-          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '*Mute contact is already disabled*', 1, 'md')
+          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '*سکوت کانتکت غیر فعال*', 1, 'md')
         else
           redis:del('mute_contacttg:'..chat_id)
           tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '*Mute contact has been disabled*', 1, 'md')
@@ -806,7 +806,7 @@ local res = http.request(database.."joke.db")
       groups = redis:sismember('groups',chat_id)
       if input:match("^[#!/][Mm]ute photo$") and is_mod(msg) and groups then
         if redis:get('mute_phototg:'..chat_id) then
-          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '*Mute photo is already on*', 1, 'md')
+          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '*سکوت عکس فعال*', 1, 'md')
         else
           redis:set('mute_phototg:'..chat_id, true)
           tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '*Mute photo has been enabled*', 1, 'md')
@@ -814,7 +814,7 @@ local res = http.request(database.."joke.db")
       end
       if input:match("^[#!/][Uu]nmute photo$") and is_mod(msg) and groups then
         if not redis:get('mute_phototg:'..chat_id) then
-          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '*Mute photo is already disabled*', 1, 'md')
+          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '*سکوت عکس غیر غعال*', 1, 'md')
         else
           redis:del('mute_phototg:'..chat_id)
           tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '*Mute photo has been disabled*', 1, 'md')
@@ -824,7 +824,7 @@ local res = http.request(database.."joke.db")
       groups = redis:sismember('groups',chat_id)
       if input:match("^[#!/][Mm]ute audio$") and is_mod(msg) and groups then
         if redis:get('mute_audiotg:'..chat_id) then
-          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '*Mute audio is already on*', 1, 'md')
+          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '*سکوت اهنگ فعال*', 1, 'md')
         else
           redis:set('mute_audiotg:'..chat_id, true)
           tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '*Mute audio has been enabled*', 1, 'md')
@@ -832,7 +832,7 @@ local res = http.request(database.."joke.db")
       end
       if input:match("^[#!/][Uu]nmute audio$") and is_mod(msg) and groups then
         if not redis:get('mute_audiotg:'..chat_id) then
-          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '*Mute audio is already disabled*', 1, 'md')
+          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '*سکوت اهنگ غیر فعال*', 1, 'md')
         else
           redis:del('mute_audiotg:'..chat_id)
           tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '*Mute audio has been disabled*', 1, 'md')
@@ -842,7 +842,7 @@ local res = http.request(database.."joke.db")
       groups = redis:sismember('groups',chat_id)
       if input:match("^[#!/][Mm]ute voice$") and is_mod(msg) and groups then
         if redis:get('mute_voicetg:'..chat_id) then
-          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '*Mute voice is already on*', 1, 'md')
+          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '*سکوت ویس فعال*', 1, 'md')
         else
           redis:set('mute_voicetg:'..chat_id, true)
           tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '*Mute voice has been enabled*', 1, 'md')
@@ -850,7 +850,7 @@ local res = http.request(database.."joke.db")
       end
       if input:match("^[#!/][Uu]nmute voice$") and is_mod(msg) and groups then
         if not redis:get('mute_voicetg:'..chat_id) then
-          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '*Mute voice is already disabled*', 1, 'md')
+          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '*سکوت ویس غیر فعال*', 1, 'md')
         else
           redis:del('mute_voicetg:'..chat_id)
           tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '*Mute voice has been disabled*', 1, 'md')
@@ -860,7 +860,7 @@ local res = http.request(database.."joke.db")
       groups = redis:sismember('groups',chat_id)
       if input:match("^[#!/][Mm]ute video$") and is_mod(msg) and groups then
         if redis:get('mute_videotg:'..chat_id) then
-          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '*Mute video is already on*', 1, 'md')
+          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '*سکوت ویدیو فعال*', 1, 'md')
         else
           redis:set('mute_videotg:'..chat_id, true)
           tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '*Mute video has been enabled*', 1, 'md')
@@ -868,7 +868,7 @@ local res = http.request(database.."joke.db")
       end
       if input:match("^[#!/][Uu]nmute video$") and is_mod(msg) and groups then
         if not redis:get('mute_videotg:'..chat_id) then
-          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '*Mute video is already disabled*', 1, 'md')
+          tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '*سکوت ویدیو غیر فعال*', 1, 'md')
         else
           redis:del('mute_videotg:'..chat_id)
           tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '*Mute video has been disabled*', 1, 'md')
@@ -1007,7 +1007,7 @@ local res = http.request(database.."joke.db")
         .."*Mute Video : *".."`"..video.."`".."\n"
         .."*Mute Document : *".."`"..document.."`".."\n"
         .."*Mute Text : *".."`"..text1.."`".."\n"
-        .."*Mute Team* - @textt5"
+        .."*Telee Mute* - @Telee_Mute"
         tdcli.sendText(chat_id, msg.id_, 0, 1, nil, text, 1, 'md')
       end
       if input:match("^[#!/][Ff]wd$") then
@@ -1141,7 +1141,7 @@ local res = http.request(database.."joke.db")
       tdcli.deleteMessages(chat_id, {[0] = msg.id_})
     end
 
-    local is_fosh_msg = input:match("کیر") or input:match("کس") or input:match("کون") or input:match("85") or input:match("جنده") or input:match("ننه") or input:match("ننت") or input:match("مادر") or input:match("قهبه") or input:match("گایی") or input:match("سکس") or input:match("kir") or input:match("kos") or input:match("kon") or input:match("nne") or input:match("nnt")
+    local is_fosh_msg = input:match("کیر") or input:match("کس") or input:match("کون") or input:match("85") or input:match("جنده") or input:match("ننه") or input:match("ننت") or input:match("مادرجنده") or input:match("قهبه") or input:match("گایی") or input:match("سکس") or input:match("kir") or input:match("kos") or input:match("kon") or input:match("nne") or input:match("nnt") or input:match("کص") or input:match("کیون") or input:match("زیرخابمه")
     if redis:get('badwordtg:'..chat_id) and is_fosh_msg and not is_mod(msg) then
       tdcli.deleteMessages(chat_id, {[0] = msg.id_})
     end
@@ -1190,7 +1190,7 @@ if redis:get('edittg:'..data.chat_id_) then
 end 
   elseif (data.ID == "UpdateOption" and data.name_ == "my_id") then
 	
-    -- @textt5
+    -- @Telee_Mute
     tdcli_function ({
       ID="GetChats",
       offset_order_="9223372036854775807",
