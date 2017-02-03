@@ -214,8 +214,7 @@ function tdcli_update_callback(data)
         tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '<b>PONG</b>', 1, 'html')
       end
       if input:match("^[#!/][Ii][Dd]$") then
-        function run(msg, matches)
-  return "#شناسه گروه : "..msg.from.id.."\n#نام گروه : "..msg.to.title.."\n#نام شما : "..(msg.from.first_name or '').."\n#نام اول : "..(msg.from.first_name or '').."\n#نام آخر : "..(msg.from.last_name or '').."\n#آیدی : "..msg.from.id.."\n#یوزرنیم : @"..(msg.from.username or '').."\n#شماره تلفن : +"..(msg.from.phone or '')
+         tdcli.sendText(chat_id, msg.id_, 0, 1, nil, '<b>ای دی سوپرگروه : </b><code>'..string.sub(chat_id, 5,14)..'</code>\n<b>ای دی شما : </b><code>'..user_id..'</code>\n<b>کانال : </b>@Telee_Mute', 1, 'html')
       end
 
       if input:match("^[#!/][Pp][Ii][Nn]$") and reply_id and is_owner(msg) then
