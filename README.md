@@ -16,7 +16,7 @@ Create a bot!
 # Help And More...
 send ```Your PM``` to @oOo_2017_oOo in telegram
 # Developers
-* [mute-team](https://t.me/joinchat/AAAAAEJT_SOKnYX5_h5b5A) - Channel
+* [mute-team](https://t.me/Telee_Mute) - Channel
 * [@oOo_2017_oOo](https://t.me/oOo_2017_oOo) - amirhosein
 
 # Commands
